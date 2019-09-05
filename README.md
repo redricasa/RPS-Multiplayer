@@ -1,17 +1,23 @@
-# RPS-Multiplayer
-week 7 UW coding bootcamp homework
+# Train scheduler - Basic Week 7 HW
+Basic version of week 7 UW coding bootcamp homework
 
 ##INSTRUCTION:
-* Create a game that suits this user story:
-
-    * Only two users can play at the same time.
-    * Both players pick either rock, paper or scissors. After the players make their selection, the game will tell them whether a tie occurred or if one player defeated the other.
-    * The game will track each player's wins and losses.
-    * Throw some chat functionality in there! No online multiplayer game is complete without having to endure endless taunts and insults from your jerk opponent.
-    * Styling and theme are completely up to you. Get Creative!
-    * Deploy your assignment to Github Pages.
+* Overview: 
+>In this assignment, you'll create a train schedule application that incorporates Firebase to host arrival and departure data. Your app will retrieve and manipulate this information with Moment.js. This website will provide up-to-date information about various trains, namely their arrival times and how many minutes remain until they arrive at their station.
+* Setup:
+>use firebase to store data, GitHub to backup your project, and GitHub Pages to host the finished site.
+* Given Instruction:
+Make sure that your app suits this basic spec:
+When adding trains, administrators should be able to submit the following:
+- Train Name
+- Destination 
+- First Train Time -- in military time
+- Frequency -- in minutes
+- Code this app to calculate when the next train will arrive; this should be relative to the current time.
+    - Users from many different machines must be able to view same train times.
+>Styling and theme are completely up to you. Get Creative! 
 
 ##PSUDOCODE:
-* get code from week 3 and incorporate Jquery
+* code a basic outline without bootstrap- I can add bootstrap at a later time, the most important part is that the code works!
 
-##LINK TO DEPLOYED PROGRAM: [here](https://redricasa.github.io/RPS-Multiplayer/) 
+##LINK TO DEPLOYED PROGRAM: [here](https://redricasa.github.io/Train-Scheduler_FSB/) 
