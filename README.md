@@ -14,4 +14,4 @@ week 7 UW coding bootcamp homework
 ##PSUDOCODE:
 * get code from week 3 and incorporate Jquery
 
-##LINK TO DEPLOYED PROGRAM: [here]:(https://redricasa.github.io/RPS-Multiplayer/) 
+##LINK TO DEPLOYED PROGRAM: [here](https://redricasa.github.io/RPS-Multiplayer/) 
