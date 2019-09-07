@@ -46,4 +46,16 @@ $(document).ready(function(){
             minutesAway:minutesAway
         });
     });
+    database.ref().on("child_added", function(snapshot){
+        // $("#all-employee").append( "<div class='all'><span class='name'>" + snapshot.val().name + "</span><span class='role'>"+ snapshot.val().role + "</span><span class ='date'>" + snapshot.val().date + "</span><span class='rate'>" + snapshot.val().rate + "</span></div>");
+    }, function(errObj){
+        console.log("errors handled: "+ errObj.code);
+    });
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        // $("#name-display").text(snapshot.val().name);
+        // $("#email-display").text(snapshot.val().email);
+        // $("#age-display").text(snapshot.val().age);
+        // $("#comment-display").text(snapshot.val().comment);
+    });
 });
