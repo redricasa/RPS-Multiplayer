@@ -22,13 +22,13 @@ $(document).ready(function(){
         event.preventDefault();
         //grab inputs and assign variable names to get stored
         train=$("#train-input").val().trim();
-        // console.log(train);
+        console.log(train);
         destination=$("#destination-input").val().trim();
-        // console.log(destination);
+        console.log(destination);
         first=$("#first-input").val().trim();
-        // console.log(first);
+        console.log(first);
         frequency=$("#frequency-input").val().trim();
-        // console.log(frequency);
+        console.log(frequency);
 
         // nextArrival = current computer time + frequency
         // minutesAway = absolute (current computer time - nextArrival)
@@ -47,15 +47,13 @@ $(document).ready(function(){
         });
     });
     database.ref().on("child_added", function(snapshot){
-        // $("#all-employee").append( "<div class='all'><span class='name'>" + snapshot.val().name + "</span><span class='role'>"+ snapshot.val().role + "</span><span class ='date'>" + snapshot.val().date + "</span><span class='rate'>" + snapshot.val().rate + "</span></div>");
+        // replace with console.log of the dynamically created rows...00000000000000000
+        //  $("#all-employee").append( "<div class='all'><span class='name'>" + snapshot.val().name + "</span><span class='role'>"+ snapshot.val().role + "</span><span class ='date'>" + snapshot.val().date + "</span><span class='rate'>" + snapshot.val().rate + "</span></div>");
     }, function(errObj){
         console.log("errors handled: "+ errObj.code);
     });
     database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-        // Change the HTML to reflect
-        // $("#name-display").text(snapshot.val().name);
-        // $("#email-display").text(snapshot.val().email);
-        // $("#age-display").text(snapshot.val().age);
-        // $("#comment-display").text(snapshot.val().comment);
+        // do something! - add console.log for the snapshot.val().train ...0000000000000
+        
     });
 });

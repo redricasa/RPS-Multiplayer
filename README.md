@@ -14,11 +14,11 @@ When adding trains, administrators should be able to submit the following:
 - First Train Time -- in military time
 - Frequency -- in minutes
 - Code this app to calculate when the next train will arrive; this should be relative to the current time.
-    - Users from many different machines must be able to view same train times.
+- Users from many different machines must be able to view same train times.
 >Styling and theme are completely up to you. Get Creative! 
 
 ##PSUDOCODE:
->code a basic outline without bootstrap- I can add bootstrap at a later time, the most important part is that the code works!
+>code a basic outline without bootstrap- _I can add bootstrap at a later time_, the most important part is that the code works!
 * imported the code from Week 7 activity 17 and modified it to match the needed elements of the train scheduler(found in the images folder)
 * 
 ##LINK TO DEPLOYED PROGRAM: [here](https://redricasa.github.io/Train-Scheduler_FSB/) 
