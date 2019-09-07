@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var firebaseConfig = {
+    var config = {
         apiKey: "AIzaSyDQC8uacewwXzObi5MHpht2xUlvq1e4Hyk",
         authDomain: "week-7-uw-coding-bootcamp.firebaseapp.com",
         databaseURL: "https://week-7-uw-coding-bootcamp.firebaseio.com",
@@ -10,32 +10,29 @@ $(document).ready(function(){
         };
         firebase.initializeApp(config);
         var database = firebase.database();
-         // initial values
-        var name = "";
-        var role = "";
-        var date = 0;
-        var rate = 0;
-      
-       
+        // initial values
+        var train = "";
+        var destination = "";
+        var first = 0;
+        var frequency = 0;
     //event handler for submit button
     $("#submit").on("click", function(event){
         event.preventDefault();
         //grab inputs
-        name=$("#name-input").val().trim();
-        // console.log(name);
-        role=$("#role-input").val().trim();
-        // console.log(role);
-        date=$("#date-input").val().trim();
-        // console.log(date);
-        rate=$("#rate-input").val().trim();
-        // console.log(rate);
+        train=$("#train-input").val().trim();
+        // console.log(train);
+        destination=$("#destination-input").val().trim();
+        // console.log(destination);
+        first=$("#first-input").val().trim();
+        // console.log(first);
+        frequency=$("#frequency-input").val().trim();
+        // console.log(frequency);
         //push into database
         database.ref().push({
-            name:name,
-            role:role,
-            date:date,
-            rate:rate,
-            
+            train:train,
+            destination:destination,
+            first:first,
+            frequency:frequency, 
         });
     });
     database.ref().on("child_added", function(snapshot){
@@ -43,12 +40,11 @@ $(document).ready(function(){
     }, function(errObj){
         console.log("errors handled: "+ errObj.code);
     });
-        
-        database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-          // Change the HTML to reflect
-          $("#name-display").text(snapshot.val().name);
-          $("#email-display").text(snapshot.val().email);
-          $("#age-display").text(snapshot.val().age);
-          $("#comment-display").text(snapshot.val().comment);
-        });
+    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
+        // Change the HTML to reflect
+        $("#name-display").text(snapshot.val().name);
+        $("#email-display").text(snapshot.val().email);
+        $("#age-display").text(snapshot.val().age);
+        $("#comment-display").text(snapshot.val().comment);
+    });
 });

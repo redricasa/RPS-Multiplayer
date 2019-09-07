@@ -12,44 +12,37 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 </head>
 <body>
-    <header>Employee Database time and motion </header>
-    <div>
+    <header> Train Scheduler</header>
+    <div> Current Train Schedule
         <table>
             <tr>
-                <th>Employee Name</th>
-                <th>Role</th>
-                <th>Start Date</th>
-                <th>Montly Rate</th>
+                <th>Train Name</th>
+                <th>Destination</th>
+                <th>Frequency(min)</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away</th>
             </tr>
             <tr>
-                <td id="name-display">test name</td>
-                <td id="role-display">test role</td>
-                <td id="date-display">test date</td>
-                <td id="rate-display">test rate</td>
+                <td id="Train-display">test</td>
+                <td id="destination-display">test</td>
+                <td id="frequency-display">test</td>
+                <td id="next-display">test</td>
+                <td id="minutes-display">test</td>
             </tr>
         </table><br>
     </div>
-    <form>
-        <div>Employee Name</div> 
-        <input type="text" name="name" id="name-input"><br> 
-        <div>Role</div>
-        <input type="text" name="role" id="role-input"><br>
-        <div>Start Date</div>
-        <input type="string" name="date" id="date-input"><br>
-        <div>Montly Rate</div> 
-        <input type="number" name="rate" id="rate-input"><br>
+    <form> 
+        <div>Add Train</div>
+        <label for="train-input">Train Name</label><br> 
+        <input type="text" name="train" id="train-input"><br> 
+        <label for="destination-input">Destination</label><br>
+        <input type="text" name="destination" id="destination-input"><br>
+        <label for="first-input">First Train Time(HH:mm-military time)</label><br>
+        <input type="time" name="first" id="first-input"><br>
+        <label for="next-input">Frequency(min)</label><br>
+        <input type="number" name="next" id="next-input"><br>
+        <!-- submit button -->
         <input type="submit" value="submit" id="submit">
     </form>
-    <div>Most Recent Employee</div>
-    <div> 
-        <h2 id="recent-name"></h2>
-        <h3 id="recent-name"></h3>
-        <h3 id="recent-name"></h3>
-        <h3 id="recent-name"></h3>
-    </div>
-    <div>All Employees</div>
-    <div>
-        <div id="all-employee"></div>
-    </div>
 </body>
 </html>

@@ -18,6 +18,7 @@ When adding trains, administrators should be able to submit the following:
 >Styling and theme are completely up to you. Get Creative! 
 
 ##PSUDOCODE:
-* code a basic outline without bootstrap- I can add bootstrap at a later time, the most important part is that the code works!
-
+>code a basic outline without bootstrap- I can add bootstrap at a later time, the most important part is that the code works!
+* imported the code from Week 7 activity 17 and modified it to match the needed elements of the train scheduler(found in the images folder)
+* 
 ##LINK TO DEPLOYED PROGRAM: [here](https://redricasa.github.io/Train-Scheduler_FSB/) 
