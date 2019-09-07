@@ -15,32 +15,36 @@
     <header> Train Scheduler</header>
     <div> Current Train Schedule
         <table>
-            <tr>
-                <th>Train Name</th>
-                <th>Destination</th>
-                <th>Frequency(min)</th>
-                <th>Next Arrival</th>
-                <th>Minutes Away</th>
-            </tr>
-            <tr>
-                <td id="Train-display">test</td>
-                <td id="destination-display">test</td>
-                <td id="frequency-display">test</td>
-                <td id="next-display">test</td>
-                <td id="minutes-display">test</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Train Name</th>
+                    <th>Destination</th>
+                    <th>Frequency(min)</th>
+                    <th>Next Arrival</th>
+                    <th>Minutes Away</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>train</td>
+                    <td>destination</td>
+                    <td>frequency</td>
+                    <td>next</td>
+                    <td>min</td>
+                </tr>
+            </tbody>
         </table><br>
     </div>
     <form> 
-        <div>Add Train</div>
+        <div>Add Train</div><br>
         <label for="train-input">Train Name</label><br> 
         <input type="text" name="train" id="train-input"><br> 
         <label for="destination-input">Destination</label><br>
         <input type="text" name="destination" id="destination-input"><br>
         <label for="first-input">First Train Time(HH:mm-military time)</label><br>
-        <input type="time" name="first" id="first-input"><br>
+        <input type="time" name="first" id="first-input" value="13:45"><br>
         <label for="next-input">Frequency(min)</label><br>
-        <input type="number" name="next" id="next-input"><br>
+        <input type="number" name="next" id="frequency-input"><br>
         <!-- submit button -->
         <input type="submit" value="submit" id="submit">
     </form>
