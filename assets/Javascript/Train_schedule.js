@@ -17,6 +17,8 @@ $(document).ready(function(){
         var frequency = 0;
         var nextArrival= 0;
         var minutesAway = 0;
+        var currentDate = moment().format();
+        console.log("current date is: "+currentDate);
     //event handler for submit button
     $("#submit").on("click", function(event){
         event.preventDefault();
@@ -27,23 +29,24 @@ $(document).ready(function(){
         console.log(destination);
         first=$("#first-input").val().trim();
         console.log(first);
-        frequency=$("#frequency-input").val().trim();
+        //math.abs() prevents negative numbers
+        var abs = Math.abs($("#frequency-input").val().trim());
+        frequency = abs
         console.log(frequency);
 
         // nextArrival = current computer time + frequency
-        // minutesAway = absolute (current computer time - nextArrival)
-
+        // minutesAway = (current computer time - nextArrival).val().abs();
         //add a row to the table with every submit button click 000000000000000
         var addRow = "<tr><td>" + train + "</td><td>" + destination+ "</td><td>" +frequency + "</td><td>" +nextArrival +"</td><td>"+minutesAway +"</td></tr>"
         $("table tbody").append(addRow);
         //push into database
         database.ref().push({
-            trainName:train,
-            destination:destination,
-            first:first,
-            frequency:frequency, 
-            nextArrival:nextArrival,
-            minutesAway:minutesAway
+            Train_Name:train,
+            Destination:destination,
+            First_Arrival:first,
+            Frequency:frequency, 
+            Next_Arrival:nextArrival,
+            Minutes_Away:minutesAway
         });
     });
     database.ref().on("child_added", function(snapshot){
