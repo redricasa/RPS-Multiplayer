@@ -24,22 +24,14 @@ $(document).ready(function(){
         event.preventDefault();
         //grab inputs and assign variable names to get stored
         train=$("#train-input").val().trim();
-        console.log(train);
         destination=$("#destination-input").val().trim();
-        console.log(destination);
         first=$("#first-input").val().trim();
-        console.log(first);
         //math.abs() prevents negative numbers
         var abs = Math.abs($("#frequency-input").val().trim());
         frequency = abs
-        console.log(frequency);
-
         // nextArrival = current computer time + frequency
         // minutesAway = (current computer time - nextArrival).val().abs();
-        //add a row to the table with every submit button click 000000000000000
-        // var addRow = "<tr><td>" + train + "</td><td>" + destination+ "</td><td>" +frequency + "</td><td>" +nextArrival +"</td><td>"+minutesAway +"</td></tr>"
-
-        
+        var addRow = function(){
             var trainrow = $('<td>'+ train + '</td>'); 
             var destrow = $('<td>'+ destination + '</td>');
             var freqrow = $('<td>'+ frequency + '</td>');
@@ -47,8 +39,8 @@ $(document).ready(function(){
             var minrow = $('<td>'+ minutesAway + '</td>');
             var trow = $('<tr>'+ trainrow + destrow + freqrow + nextrow + minrow );
             $("table tbody").append(trow);
-
-        // $("table tbody").append(addRow);
+        }
+        addRow();
         //push into database
         database.ref().push({
             train:train,
@@ -67,7 +59,6 @@ $(document).ready(function(){
         console.log("errors handled: "+ errObj.code);
     });
     database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-        // do something! - add console.log for the snapshot.val().train ...0000000000000
+        console.log(snapshot);
     });
-
 });
