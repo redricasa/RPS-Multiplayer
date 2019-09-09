@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    //configuration to link to firebase-Google's databese 
     var config = {
         apiKey: "AIzaSyDQC8uacewwXzObi5MHpht2xUlvq1e4Hyk",
         authDomain: "week-7-uw-coding-bootcamp.firebaseapp.com",
@@ -7,58 +8,63 @@ $(document).ready(function(){
         storageBucket: "",
         messagingSenderId: "869404511411",
         appId: "1:869404511411:web:637d4e046d954843"
-        };
-        firebase.initializeApp(config);
-        var database = firebase.database();
-        // initial values
-        var train = "";
-        var destination = "";
-        var first = 0;
-        var frequency = 0;
-        var nextArrival= 0;
-        var minutesAway = 0;
-        var currentTime = moment().format();
-        console.log("current date is: "+currentTime);
+    };//initializing firebase
+    firebase.initializeApp(config);
+    //variable to store database set to the database of firebase
+    var database = firebase.database();
+    var currentTime = moment().format();//current machine date/military time
+    console.log("current date and time is: "+currentTime);
+    //a functionn to add rows to the table
+    var addRow = function(train,destination,frequency,first){
+        var trainrow = $('<td>').text(train);
+        var destrow = $('<td>').text(destination);
+        var freqrow = $('<td>').text(frequency);      
+        var nextrow = $('<td>')
+        var minrow = $('<td>')
+        var updateTime = function(){
+            var currentTime = moment();
+            var firstTimeConverted = moment(first,"HH:mm");
+            var diff = currentTime.diff(firstTimeConverted);
+            var diffmin = Math.floor((diff/1000)/60);
+            var minutesAway = diffmin;
+            if (minutesAway > 0){
+                var remain=  diffmin % frequency;
+                var minutesAway = frequency-remain;
+            }else{
+                minutesAway = Math.abs(minutesAway);
+            }
+            var nextArrival = currentTime.add(minutesAway,'minutes').format('HH:mm');
+            nextrow.text(nextArrival);
+            minrow.text(minutesAway);
+        };    
+        updateTime();
+        setInterval(updateTime, 10000);
+        var trow = $('<tr>').append(trainrow).append(destrow).append(freqrow).append(nextrow).append(minrow);
+        $("table tbody").append(trow);
+    }    
     //event handler for submit button
     $("#submit").on("click", function(event){
         event.preventDefault();
         //grab inputs and assign variable names to get stored
-        train=$("#train-input").val().trim();
-        destination=$("#destination-input").val().trim();
-        first=$("#first-input").val().trim();
-        //math.abs() prevents negative numbers
-        var abs = Math.abs($("#frequency-input").val().trim());
-        frequency = abs
-        // nextArrival = current computer time + frequency
-        // minutesAway = (current computer time - nextArrival).val().abs();
-        var addRow = function(){
-            var trainrow = $('<td>'+ train + '</td>'); 
-            var destrow = $('<td>'+ destination + '</td>');
-            var freqrow = $('<td>'+ frequency + '</td>');
-            var nextrow = $('<td>'+ nextArrival + '</td>');
-            var minrow = $('<td>'+ minutesAway + '</td>');
-            var trow = $('<tr>'+ trainrow + destrow + freqrow + nextrow + minrow );
-            $("table tbody").append(trow);
-        }
-        addRow();
-        //push into database
+        var train=$("#train-input").val().trim();
+        var destination=$("#destination-input").val().trim();
+        var first=$("#first-input").val().trim();
+        var frequency = $("#frequency-input").val().trim();             
+        //push variables into database
         database.ref().push({
             train:train,
             destination:destination,
             first:first,
-            frequency:frequency, 
-            nextArrival:nextArrival,
-            minutesAway:minutesAway
+            frequency:frequency 
         });
     });
-    database.ref().on("child_added", function(child_snapshot){
+    //on child_added function that orders the database entry by date added
+    database.ref().orderByChild("dateAdded").on("child_added", function(child_snapshot){
         console.log(child_snapshot.val());
         var child = child_snapshot.val();
-        $("table tbody").append("<tr><td>" + child.train + "</td><td>" + child.destination+ "</td><td>" +child.frequency + "</td><td>" + child.nextArrival +"</td><td>"+ child.minutesAway +"</td></tr>");
-    }, function(errObj){
+        //this call back ensures data persistence when the page is refreshed
+        addRow(child.train,child.destination,child.frequency, child.first);
+    }, function(errObj){//this will display in the console the error code handled
         console.log("errors handled: "+ errObj.code);
-    });
-    database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
-        console.log(snapshot);
     });
 });
